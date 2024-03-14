@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
+const User = require("./User");
 
-const movieSchema = mongoose.Schema(
+const movieSchema = new mongoose.Schema(
   {
     title: {
       type: String,
@@ -22,6 +23,11 @@ const movieSchema = mongoose.Schema(
     description: {
       type: String,
       required: true,
+    },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: User,
     },
   },
   {
