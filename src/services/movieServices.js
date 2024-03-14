@@ -28,8 +28,22 @@ const getMovieById = async (id) => {
   }
 };
 
+const updateMovie = async (id, updatedData) => {
+  try {
+    const movie = Movie.findByIdAndUpdate(
+      { _id: id },
+      { $set: updatedData },
+      { new: true }
+    );
+    return movie;
+  } catch (error) {
+    throw error;
+  }
+};
+
 module.exports = {
   createMovie,
   getAllMovies,
   getMovieById,
+  updateMovie,
 };

@@ -8,4 +8,8 @@ router.get("/", movieController.getAllMovies);
 
 router.get("/:id", movieController.getMovieById);
 
+router.put("/:id", movieController.updateMovie);
+
+
+
 module.exports = router;
