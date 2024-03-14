@@ -4,4 +4,6 @@ const movieController = require("../controllers/movieControllers");
 
 router.post("/", movieController.createMovie);
 
+router.get("/", movieController.getAllMovies)
+
 module.exports = router;

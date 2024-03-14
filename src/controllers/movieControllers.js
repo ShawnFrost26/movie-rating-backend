@@ -19,6 +19,16 @@ const createMovie = async (req, res) => {
   }
 };
 
+const getAllMovies = async (req, res) => {
+    try {
+        const movies = await movieService.getAllMovies();
+        res.status(200).json(movies)
+    } catch (error) {
+        res.status(500).json({message: error.message})
+    }
+}
+
 module.exports = {
   createMovie,
+  getAllMovies,
 };

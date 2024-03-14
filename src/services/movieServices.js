@@ -10,6 +10,16 @@ const createMovie = async (movieData) => {
   }
 };
 
+const getAllMovies = async () => {
+    try {
+        const movies = await Movie.find();
+        return movies;
+    } catch (error) {
+        throw error;
+    }
+}
+
 module.exports = {
   createMovie,
+  getAllMovies,
 };
