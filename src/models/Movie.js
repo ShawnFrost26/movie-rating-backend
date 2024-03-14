@@ -16,7 +16,7 @@ const movieSchema = mongoose.Schema(
       required: true,
     },
     releaseYear: {
-      type: number,
+      type: Number,
       required: true,
     },
     description: {
