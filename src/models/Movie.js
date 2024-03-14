@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const User = require("./User");
+// const User = require("./User");
 
 const movieSchema = new mongoose.Schema(
   {
@@ -24,11 +24,11 @@ const movieSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    userId: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-      ref: User,
-    },
+    // userId: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   required: true,
+    //   ref: User,
+    // },
   },
   {
     timestamps: true,
