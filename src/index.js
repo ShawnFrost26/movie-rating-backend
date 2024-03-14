@@ -2,9 +2,13 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 require("dotenv").config();
+const movieRoutes = require("./routes/movieRoutes");
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 const MONGODB_URI = process.env.MONGODB_URI;
+
+app.use(express.json());
+app.use("/api/movies", movieRoutes);
 
 mongoose
   .connect(MONGODB_URI)
