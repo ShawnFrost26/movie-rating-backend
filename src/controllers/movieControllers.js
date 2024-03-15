@@ -21,7 +21,15 @@ const createMovie = async (req, res) => {
 
 const getAllMovies = async (req, res) => {
   try {
-    const movies = await movieService.getAllMovies();
+    const filters = {
+      genre: req.query.genre,
+      releaseYear: req.query.releaseYear,
+      director: req.query.director,
+    };
+
+    console.log("controller, getAllMovies filters:", filters);
+
+    const movies = await movieService.getAllMovies(filters);
     res.status(200).json(movies);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -60,18 +68,18 @@ const updateMovie = async (req, res) => {
 };
 
 const deleteMovie = async (req, res) => {
-    try {
-        const id = req.params.id;
+  try {
+    const id = req.params.id;
 
-        const success = movieService.deleteMovie(id);
-        if(!success){
-            return res.status(404).json({message: "Movie not found"})
-        }
-        res.status(204).json({message: "Movie deleted successfully"})
-    } catch (error) {
-        res.status(500).json({message: message.error});
+    const success = movieService.deleteMovie(id);
+    if (!success) {
+      return res.status(404).json({ message: "Movie not found" });
     }
-}
+    res.status(204).json({ message: "Movie deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: message.error });
+  }
+};
 
 module.exports = {
   createMovie,

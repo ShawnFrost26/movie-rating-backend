@@ -10,9 +10,20 @@ const createMovie = async (movieData) => {
   }
 };
 
-const getAllMovies = async () => {
+const getAllMovies = async (filters) => {
   try {
-    const movies = await Movie.find();
+    let query = {};
+    if (filters.genre) {
+      query.genre = filters.genre;
+    }
+    if (filters.releaseYear) {
+      query.releaseYear = filters.releaseYear;
+    }
+    if (filters.director) {
+      query.director = filters.director;
+    }
+    console.log("services, query", query);
+    const movies = await Movie.find(query);
     return movies;
   } catch (error) {
     throw error;
