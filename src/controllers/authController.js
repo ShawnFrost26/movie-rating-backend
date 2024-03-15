@@ -31,7 +31,12 @@ res.status(200).json({
     }
 }
 
+const someData = async(req, res) => {
+    res.send("Accessed private endpoint!!!")
+}
+
 module.exports = {
   register,
   login,
+  someData,
 };
